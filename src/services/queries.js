@@ -13,6 +13,8 @@ export async function getMoviesWithDirector() {
 
 export async function getDirectorNames() {
   // return the list of the director's names
+  const response = await client.from('directors').select('name');
+  return checkError(response);
 }
 
 export async function getMovieById(id) {
