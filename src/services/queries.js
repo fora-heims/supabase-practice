@@ -42,5 +42,11 @@ export async function getMoviesAfter(year) {
 }
 
 export async function getHighestGrossingMovie() {
-  // return movie with the highest box office total
+  const response = await client
+    .from('movies')
+    .select('*')
+    .order('box_office', { ascending: false })
+    .limit(1)
+    .single();
+  return checkError(response);
 }
