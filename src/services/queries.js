@@ -7,6 +7,8 @@ export async function getMovies() {
 
 export async function getMoviesWithDirector() {
   // return the list of all the movies with their director
+  const response = await client.from('movies').select(`*, directors(name)`);
+  return checkError(response);
 }
 
 export async function getDirectorNames() {
