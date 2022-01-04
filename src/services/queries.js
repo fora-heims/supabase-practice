@@ -19,6 +19,8 @@ export async function getDirectorNames() {
 
 export async function getMovieById(id) {
   // return the movie with the given id
+  const response = await client.from('movies').select('*').match({ id }).single();
+  return checkError(response);
 }
 
 export async function getMovieByTitle(title) {
